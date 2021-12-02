@@ -16,6 +16,8 @@ Input: nums = [-1,0,3,5,9,12], target = 2
 Output: -1
 Explanation: 2 does not exist in nums so return -1
 */
+//Both of these are the so called "Pre-Processing template style"
+//There are also twot other 
 //TC: O(LogN) | SP: O(n)
 var search = function (nums, target) {
   let startIdx = 0
@@ -27,9 +29,9 @@ const searchRecurse = (nums, target, startIdx, endIdx) => {
   if (startIdx > endIdx) return -1
 
   const midIdx = startIdx + Math.floor((endIdx - startIdx) / 2)
-  const midValue = nums[midIdx];
-  if (target === midValue) return midIdx
-  if (target > midValue)
+  const midVal = nums[midIdx];
+  if (target === midVal) return midIdx
+  if (target > midVal)
     return searchRecurse(nums, target, midIdx + 1, endIdx)
   else
     return searchRecurse(nums, target, startIdx, midIdx - 1)
@@ -37,22 +39,22 @@ const searchRecurse = (nums, target, startIdx, endIdx) => {
 
 //TC: O(LogN) | SP: O(1)
 const binarySearch = (nums, target) => {
-  let start = 0
-  let end = nums.length - 1
+  let startIdx = 0
+  let endIdx = nums.length - 1
 
-  while (start <= end) {
+  while (startIdx <= endIdx) {
     //FASTER, prevents overflow at very large inputs
-    const midIdx = start + Math.floor((end - start) / 2);
+    const midIdx = startIdx + Math.floor((endIdx - startIdx) / 2);
     //const midIdx = Math.floor((start + end) / 2);
     //const midIdx = Math.parseInt((start + end) / 2);
-    const midValue = nums[midIdx];
-    if (target === midValue) {
+    const midVal = nums[midIdx];
+    if (target === midVal)
       return midIdx;
-    } else if (target > midValue) {
-      start = midIdx + 1;  // continue to search on the right
-    } else {
-      end = midIdx - 1; //continue to search on the left
-    }
+    if (target > midVal)
+      startIdx = midIdx + 1;  // continue to search on the right, discard left
+    else
+      endIdx = midIdx - 1; //continue to search on the left, discard right
+
   }
   return -1
 }

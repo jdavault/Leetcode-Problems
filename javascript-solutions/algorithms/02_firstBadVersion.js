@@ -34,22 +34,22 @@ const solution = (isBadVersion) => {
 };
 
 //TC: O(logN) | SC: O(1)
+//https://www.youtube.com/watch?v=E15djRphPj0 -- fisherCoding
+//https://www.youtube.com/watch?v=SNDE-C86n88 -- KevinJr
 const solution = (isBadVersion) => {
   return function (n) {
-    //1. init strt and end indices
-    let startIdx = 0;
-    let endIdx = n
-    //2. Iterate startIdx <= endIdx
-    while (startIdx <= endIdx) {
-      //3. Def midIdx
-      let midIdx = startIdx + Math.floor((endIdx - startIdx) / 2);
-      //4. if isBad endIdx = midIdx -1
-      // (similar to target in or < mid)
-      if (isBadVersion(midIdx)) endIdx = midIdx - 1
-      //else startIdx = midIdx + 1
-      else startIdx = midIdx + 1
+    let start = 1; //perhaps the first one is bad
+    let end = n
+    while (start < end) {
+      let mid = start + Math.floor((end - start) / 2);
+      if (isBadVersion(mid))
+        end = mid // can eliminate this mid + 
+      //everthing after it
+      else
+        start = mid + 1 // can eliminate the left
+      //becuz everthing to the left of this mid is a good version
     };
-    return startIdx;
+    return start;
   };
 };
 

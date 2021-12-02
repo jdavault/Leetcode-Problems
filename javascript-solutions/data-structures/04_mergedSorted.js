@@ -72,6 +72,7 @@ const mergeSimple = (nums1, m, nums2, n) => {
   nums1.sort((a, b) => a - b);
 };
 
+
 let nums1 = [2, 5, 6], m = 3
 let nums2 = [1, 2, 3, 4, 0, 0], n = 4
 let expected = [1, 2, 2, 3, 4, 5, 6]
