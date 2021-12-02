@@ -16,7 +16,7 @@ Output: 1
 */
 
 //Simple, intutive, linear Search
-//T:O(n), S:0(n)
+//T:O(n), S:0(1)
 const searchInsertLinear = (nums, target) => {
   for (i = 0; i < nums.length; i++) {
     if (nums[i] >= target)
@@ -27,6 +27,8 @@ const searchInsertLinear = (nums, target) => {
 };
 
 //Binary Search Approach -- iterative so no extra space 
+//https://www.youtube.com/watch?v=0A40XJH_VvE - techDose
+//https://www.youtube.com/watch?v=K-RYzDZkzCI - neetCode
 //TC:O(logN) | SC:0(1)
 const searchInsert = (nums, target) => {
   //1. initial startIdx, endIdx
@@ -38,10 +40,13 @@ const searchInsert = (nums, target) => {
     let midIdx = startIdx + Math.floor((endIdx - startIdx) / 2);
     let midValue = nums[midIdx]
     //3. if midvalue == target return midIdx
-    if (target === midValue) return midIdx;
+    if (target === midValue)
+      return midIdx;
     //4. else move pointes left or right
-    if (target > midValue) startIdx = midIdx + 1;
-    else endIdx = midIdx - 1;
+    if (target > midValue)
+      startIdx = midIdx + 1;
+    else
+      endIdx = midIdx - 1;
   }
   return startIdx;
 
@@ -69,9 +74,9 @@ const searchRecurse = (nums, target, start, end) => {
 // let target = 4
 // let expected = 2
 
-let input = [1, 2, 5, 6]
-let target = 3
-let expected = 2
+let input = [2, 5, 6, 7]
+let target = 8
+let expected = 4
 
 let actual = searchInsert(input, target)
 const status = actual.toString() == expected.toString() ? "CORRECT" : "INCORRECT"
