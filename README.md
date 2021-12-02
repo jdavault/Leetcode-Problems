@@ -2,7 +2,7 @@
 
 # Leetcode-Problems
 
-<h2>Javascript solutions for the Data Structures and Algorithms Studay Plans</h2>
+<h2>Javascript solutions for the Data Structures and Algorithms Study Plans</h2>
 <p>
 https://leetcode.com/study-plan/data-structure
 </p>
