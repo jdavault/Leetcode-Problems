@@ -38,7 +38,7 @@ const rotateBruteForce = (nums, k) => {
   }
 }
 
-//Very similar to the one above
+//Very similar to the one above -- NOT A FAN OF THIS CUMBERSOME APPROACH
 //TC: O(N*K) | SC: O(N)
 //Optimized but not for space
 const rotateAnotherAccetable = (nums, k) => {
@@ -71,7 +71,7 @@ const rotateBetter = (nums, k) => {
   let len = nums.length
   let copy = []
   for (i = 0; i < len; i++) {
-    copy[(i + k) % len] = nums[i]
+    copy[(i + k) % len] = nums[i]  //We add the % len so it will wrap
   }
   //there is no return value so we have to use nums
   for (i = 0; i < len; i++) {
@@ -80,6 +80,7 @@ const rotateBetter = (nums, k) => {
 }
 
 //"THE TRICK" - don't question it
+//[1,2,3,4,5,6,7] => [7,6,5,4,3,2,1] => [5,6,7,1,2,3,4]
 //TC:0(n) | SC:O(1)  //This solution is optimized for space
 //https://www.youtube.com/watch?v=lTHTR_jsqAQ (3:00min) -- FisherCoding
 //https://www.youtube.com/watch?v=gmu0RA5_zxs - nick white
@@ -88,7 +89,7 @@ const rotateAlsoVeryGood = (nums, k) => {
   k %= len
   reverse(nums, 0, len - 1) //reversing all number
   reverse(nums, 0, k - 1); // reversing first k numbers
-  reverse(nums, k, len - 1) // reversing last n-k numbers
+  reverse(nums, k, len - 1) // reversing last k to end numbers
 }
 
 const reverse = (nums, start, end) => {
