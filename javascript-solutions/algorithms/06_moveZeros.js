@@ -34,34 +34,37 @@ const moveZeroesB = (nums) => {
 //https://www.youtube.com/watch?v=39VJV4KVyi8 -fisher
 //https://www.youtube.com/watch?v=0rPuILjoVsg -terribleWB
 const moveZeroes3 = function (nums) {
-  for (let i = 0, lastZeroIdx = 0; lastZeroIdx < nums.length && i < nums.length; i++) {
-    if (nums[i] != 0) {
-      let lastZeroVal = nums[lastZeroIdx] //lastZeroIdx only increments on nonZero
-      nums[lastZeroIdx] = nums[i]
-      nums[i] = lastZeroVal //move all zero to the end
-      lastZeroIdx++
+  for (let j = 0, lastZeroIdx = 0; lastZeroIdx < nums.length && j < nums.length; j++) {
+    //j is the "explorer" or "fast" pointer
+    if (nums[j] != 0) {
+      let tmp = nums[lastZeroIdx] //hold 0 value increments on nonZero
+      nums[lastZeroIdx] = nums[j] //lzi is no longer 0, so can advance
+      lastZeroIdx++ //increment "slow / zero / anchor pointer"
+      nums[j] = tmp //move zero toward the end
     }
   }
 }
 
+//Not bad .. two pointer solution
 //Complexity ... T: 0(n) | S: 0(1) //Kevin Jr.
 //https://www.youtube.com/watch?v=1PEncepEIoE -kevinJr
 //https://www.youtube.com/watch?v=qdhLs6usobE&t=344s -AndyGala
 const moveZeroes2 = (nums) => {
 
-  let lastNonZeroIdx = 0
+  let lastZeroIdx = 0 //slow / zero pointer
 
-  for (let i = 0; i < nums.length; i++) {
-    if (nums[i] !== 0)
-      nums[lastNonZeroIdx++] = nums[i];
+  for (let j = 0; j < nums.length; j++) {
+    if (nums[j] !== 0)
+      nums[lastZeroIdx++] = nums[j];
   }
   //fill the rest of the array with zero
-  for (let i = lastNonZeroIdx; i < nums.length; i++) {
+  for (let i = lastZeroIdx; i < nums.length; i++) {
     nums[i] = 0
   }
 
 }
 
+//Same as above but with while loop
 //Complexity ... T: 0(n) | S: 0(1)
 const moveZeroes = (nums) => {
 
@@ -81,7 +84,7 @@ const moveZeroes = (nums) => {
 
 const array = [0, 1, 0, 3, 12]
 const expected = [1, 3, 12, 0, 0];
-let actual = moveZeroes3(array);
+let actual = moveZeroes2(array);
 actual = array;
 const status = actual.toString() == expected.toString() ? "CORRECT" : "INCORRECT"
 console.log(`${status} ANSWER - Expected: ${expected} | Actual: ${actual}`)
