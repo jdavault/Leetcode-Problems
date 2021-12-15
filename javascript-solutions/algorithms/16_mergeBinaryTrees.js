@@ -1,4 +1,6 @@
-/* LeetCode #617, Merge Two Binary Trees
+/* LeetCode #617 - Merge Two Binary Trees
+
+https://leetcode.com/problems/merge-two-binary-trees
 
 You are given two binary trees root1 and root2.
 
@@ -8,6 +10,7 @@ Return the merged tree.
 
 Note: The merging process must start from the root nodes of both trees.
 */
+
 //https://www.youtube.com/watch?v=_LJO5nBKC1A - Nick White
 //https://www.youtube.com/watch?v=Rt-mneSQg9E - Jayati Tiwari
 
