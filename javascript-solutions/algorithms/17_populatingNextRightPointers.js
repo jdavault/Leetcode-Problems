@@ -45,9 +45,9 @@ class MyQueue {
 //https://www.youtube.com/watch?v=yFTr_EnlERM - Naresh Gupta 
 //https://www.youtube.com/watch?v=_Vv6_RxBN94 - Happy Coding
 //TC: O(N) | SC: O(N)
-const connect = (root) => {
-  if (root == null) return root
-  let q = new MyQueue();
+var connect = function (root) {
+  if (!root) return root
+  let q = new myQueue();
   q.enqueue(root)
   q.enqueue(null)
   while (!q.isEmpty()) {
@@ -59,9 +59,9 @@ const connect = (root) => {
       continue;
     } else {
       curr.next = q.peek();
-      if (curr.left != null) //is not a leaf node
+      if (curr.left) //is not a leaf node
         q.enqueue(curr.left)
-      if (curr.right != null) //is not a leaf node
+      if (curr.right) //is not a leaf node
         q.enqueue(curr.right)
     }
   }
