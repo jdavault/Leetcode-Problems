@@ -17,6 +17,8 @@ Output: []
 */
 
 //https://www.youtube.com/watch?v=tQur3kprZQk - Kevin Jr
+//https://www.youtube.com/watch?v=W-EfGB0E_ao - Fisher Coding
+//https://www.youtube.com/watch?v=NhapasNIKuQ - NickWhite
 
 //
 //Recursion
